@@ -1,8 +1,8 @@
 # Hacklytics_2025
- An application developed during Hackalytics 2025. Personalized Speech-to-Text Generator for People with Speech Disabilities
-# Personalized Speech-to-Text for Children with Down Syndrome
-
+# Personalized Speech-to-Text for Children with Down Syndrome 
 ## Project Description
+
+An application developed during Hackalytics 2025. Personalized Speech-to-Text Generator for People with Speech Disabilities
 
 This project aims to develop a personalized speech-to-text generator specifically designed to accurately transcribe the speech of children with Down syndrome. Recognizing that standard speech recognition tools often struggle with non-standard speech patterns, this application leverages generative AI to dynamically adapt and learn a user's unique speech characteristics over time.
 
