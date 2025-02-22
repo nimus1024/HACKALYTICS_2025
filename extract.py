@@ -27,18 +27,29 @@ def transcribe_audio_with_whisper(audio_file, transcript_file):
         # Load model and processor
         processor = WhisperProcessor.from_pretrained("openai/whisper-small")
         model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
-        model.config.forced_decoder_ids = None
 
         # Load audio file
         audio, sr = librosa.load(audio_file, sr=16000)
-        audio_input = processor(audio, sampling_rate=16000, return_tensors="pt").input_features
+
+        # Process audio and generate input features
+        input_features = processor(
+            audio, 
+            sampling_rate=16000, 
+            return_tensors="pt"
+        ).input_features
+
+        # Force the model to transcribe in English
+        forced_decoder_ids = processor.get_decoder_prompt_ids(language="en", task="transcribe")
 
         # Generate transcription
         with torch.no_grad():
-            generated_ids = model.generate(audio_input)
+            predicted_ids = model.generate(
+                input_features,
+                forced_decoder_ids=forced_decoder_ids  # Force English transcription
+            )
 
         # Decode the transcription
-        transcription = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
+        transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)[0]
 
         # Append the transcribed text to the single transcript file
         with open(transcript_file, "a") as f:
@@ -93,4 +104,3 @@ for mp4_file in mp4_files:
 
     # Step 2: Transcribe the extracted audio with Whisper and append to a single transcript file
     transcribe_audio_with_whisper(audio_file, transcript_file)
-
