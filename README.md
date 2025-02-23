@@ -33,15 +33,17 @@ We are addressing the challenge of delayed speech development, pronunciation dif
 
 1.  **Clone the repository:**
     ```bash
-    git clone [repository URL]
+    git clone https://github.com/nimus1024/HACKALYTICS_2025.git
     ```
 2.  **Install dependencies:**
     ```bash
-    [Instructions for installing necessary libraries and dependencies]
+    pip install transformers
+    pip install gradio
+    pip install ffmpeg (make sure ffprobe is in your path)
     ```
 3.  **Run the application:**
     ```bash
-    [Instructions on how to run the application]
+    Open Interact.py and run.
     ```
 
 ## How It Works
