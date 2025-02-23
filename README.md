@@ -16,11 +16,11 @@ We are addressing the challenge of delayed speech development, pronunciation dif
 
 ## Features
 
-*Voice Recording: A user-friendly microphone interface for capturing speech input.
-*Real-Time Transcription: Immediate text transcription with incremental learning capabilities.
-*Personalized Adaptation:** The AI model learns and adapts to individual speech patterns over time, improving accuracy.
-*User Feedback Mechanism: An intuitive interface for users to correct mis-transcriptions, allowing the model to refine its accuracy based on direct feedback.
-*Personalization: A short voice training period enables the system to rapidly create a personalized speech model.
+Voice Recording: A user-friendly microphone interface for capturing speech input.
+Transcription: Immediate text transcription with incremental learning capabilities.
+Personalized Adaptation: The AI model learns and adapts to individual speech patterns over time, improving accuracy.
+User Feedback Mechanism: An intuitive interface for users to correct mis-transcriptions, allowing the model to refine its accuracy based on direct feedback.
+Personalization: A short voice training period enables the system to rapidly create a personalized speech model.
 
 ## Getting Started
 
