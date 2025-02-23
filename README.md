@@ -22,13 +22,6 @@ We are addressing the challenge of delayed speech development, pronunciation dif
 *User Feedback Mechanism: An intuitive interface for users to correct mis-transcriptions, allowing the model to refine its accuracy based on direct feedback.
 *Personalization: A short voice training period enables the system to rapidly create a personalized speech model.
 
-## Technologies Used
-
-* [Specify the pre-trained speech-to-text model you choose, e.g., Whisper, Google Speech API]
-* [Specify the programming language, e.g., Python]
-* [Specify any relevant libraries, e.g., TensorFlow, PyTorch, etc.]
-* [Specify any UI libraries, e.g., React, Flutter, etc.]
-
 ## Getting Started
 
 1.  **Clone the repository:**
