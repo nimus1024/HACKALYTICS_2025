@@ -1,3 +1,4 @@
+
 from transformers import pipeline
 import gradio as gr
 
@@ -10,10 +11,10 @@ def transcribe(audio):
 
 iface = gr.Interface(
     fn=transcribe,
-    inputs=gr.Audio(source="microphone", type="numpy"),  # Use numpy instead of filepath
+    inputs=gr.Audio(source="microphone", type="filepath"), 
     outputs="text",
     title="Whisper Small",
     description="Realtime demo for English speech recognition using a fine-tuned Whisper small model.",
 )
 
-iface.launch()
+iface.launch(debug=True)
