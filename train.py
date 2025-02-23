@@ -1,4 +1,5 @@
 from datasets import Dataset, DatasetDict, Audio
+import os
 
 # Your JSON data as a string (replace this with loading from a file if needed)
 data = {
@@ -143,7 +144,7 @@ feature_extractor = WhisperFeatureExtractor.from_pretrained("openai/whisper-smal
 from transformers import WhisperTokenizer
 from transformers import WhisperProcessor
 
-processor = WhisperProcessor.from_pretrained("openai/whisper-small", language="Hindi", task="transcribe")
+processor = WhisperProcessor.from_pretrained("openai/whisper-small", language="English", task="transcribe")
 
 
 tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-small", language="English", task="transcribe")
@@ -182,6 +183,8 @@ common_voice = common_voice.map(
     num_proc=4
 )
 import torch
+os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
+torch.mps.empty_cache() 
 #torch.tensor([1,2,3], device="mps")
 
 from dataclasses import dataclass
@@ -250,27 +253,29 @@ model.config.suppress_tokens = []
 from transformers import Seq2SeqTrainingArguments
 
 training_args = Seq2SeqTrainingArguments(
-    output_dir="./whisper-small-hi", # change to a repo name of your choice
-    per_device_train_batch_size=16,
-    gradient_accumulation_steps=1, # increase by 2x for every 2x decrease in batch size
+        output_dir="./whisper-small-hi",
+    per_device_train_batch_size=4,  
+    gradient_accumulation_steps=4,  
     learning_rate=1e-5,
-    warmup_steps=500,
-    max_steps=4000,
+    warmup_steps=20,
+    max_steps=100,
     gradient_checkpointing=True,
     fp16=False,
     evaluation_strategy="steps",
-    per_device_eval_batch_size=8,
+    per_device_eval_batch_size=4,  
     predict_with_generate=True,
     generation_max_length=225,
-    save_steps=1000,
-    eval_steps=1000,
-    logging_steps=25,
+    save_steps=20,
+    eval_steps=20,
+    logging_steps=1,
     report_to=["tensorboard"],
     load_best_model_at_end=True,
     metric_for_best_model="wer",
     greater_is_better=False,
-    push_to_hub=False,
+    push_to_hub=True,
 )
+
+processor.save_pretrained(training_args.output_dir)
 
 from transformers import Seq2SeqTrainer
 
@@ -286,6 +291,8 @@ trainer = Seq2SeqTrainer(
 )
 
 trainer.train()
+
+
 
 
 

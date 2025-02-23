@@ -1,7 +1,8 @@
 from transformers import pipeline
 import gradio as gr
 
-pipe = pipeline(model="sanchit-gandhi/whisper-small-hi") # change to "your-username/the-name-you-picked"
+# Specify the task explicitly
+pipe = pipeline("automatic-speech-recognition", model="Lun798/model1")
 
 def transcribe(audio):
     text = pipe(audio)["text"]
@@ -9,10 +10,10 @@ def transcribe(audio):
 
 iface = gr.Interface(
     fn=transcribe,
-    inputs=gr.Audio(source="microphone", type="filepath"),
+    inputs=gr.Audio(source="microphone", type="numpy"),  # Use numpy instead of filepath
     outputs="text",
-    title="Whisper Small Hindi",
-    description="Realtime demo for Hindi speech recognition using a fine-tuned Whisper small model.",
+    title="Whisper Small",
+    description="Realtime demo for English speech recognition using a fine-tuned Whisper small model.",
 )
 
 iface.launch()
