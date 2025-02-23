@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This application, developed during Hacklytics 2025, is a Personalized Speech-to-Text Generator tailored for individuals with speech disabilities, with a specific focus on children with Down syndrome.
+This application, developed during Hacklytics 2025, is a Personalized Speech-to-Text Generator tailored for individuals with speech disabilities, with a specific focus on children with dissabilities
 
 **Problem:** Standard speech recognition tools often struggle with the unique speech patterns of children with Down syndrome, leading to inaccurate transcriptions.
 
